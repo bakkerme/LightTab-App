@@ -4,42 +4,31 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { createStore } from 'redux'
 import { connect, Provider } from 'react-redux'
-import { updateParam } from './actions/index';
-import reducers from './reducers/index';
 
-import Rheostat from 'rheostat';
+import ParamSlider from './components/param-slider';
 import './css/slider.css';
+
+import store from './store';
+import ParamToSocket from './transport/param-to-socket';
 
 @connect()
 class App extends Component {
   constructor(props) {
     super();
 
+    const socket = new ParamToSocket();
     this.state = {}
   }
 
   render() {
     return (
       <div>
-        <Rheostat
-          min={1}
-          max={100}
-          values={[50]}
-          onValuesUpdated={(value) => {
-            this.props.dispatch(updateParam('TEST_PARAM', value.values[0]))
-          }}
-        />
+        <ParamSlider devParam="BRIGHTNESS" min={0} max={100} value={50} />
       </div>
     );
   }
 };
-
-let store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
 
 ReactDOM.render(
   <Provider store={store}>
