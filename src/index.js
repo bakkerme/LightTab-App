@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ParamSlider devParam="BRIGHTNESS" min={0} max={100} value={50} />
+        <ParamSlider devParam="Exposure" min={-5} max={5} precision={2} value={0} />
       </div>
     );
   }

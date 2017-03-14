@@ -12,20 +12,27 @@ class ParamSlider extends Component {
   }
 
   onChange(value) {
-    this.props.dispatch(updateParam(this.props.devParam, value.values[0]))
+    let finalValue = value.values[0] /  Math.pow(10, this.props.precision);
+    
+    this.props.dispatch(updateParam(this.props.devParam, finalValue))
 
     if (this.props.onChange) {
-      this.props.onChange(value);
+      this.props.onChange(finalValue);
     }
   }
 
   render() {
-    let { onChange, min, max, value } = this.props;
+    let { onChange, min, max, value, precision } = this.props;
+    let calculatedPrecision = Math.pow(10, precision);
+    
+    let preciseMin = min * calculatedPrecision;
+    let preciseMax = max * calculatedPrecision;
+    let preciseValue = value * calculatedPrecision
 
     return (
       <Rheostat
-        min={min}
-        max={max}
+        min={preciseMin}
+        max={preciseMax}
         values={[value]}
         onValuesUpdated={(value) => this.onChange(value)}
       />
@@ -39,12 +46,14 @@ ParamSlider.propTypes = {
   onChange: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,
-  value: PropTypes.number
+  value: PropTypes.number,
+  precision: PropTypes.number //The amount of precision in the number returned. Think of this as the number of decimal places
 }
 
 ParamSlider.defaultProps = {
   min: 1,
   max: 100,
+  precision: 1,
   value: 50
 }
 

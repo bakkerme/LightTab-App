@@ -37,7 +37,7 @@
     "android": "cordova run android",
     "ios": "cordova run ios",
     "prepare": "node config && webpack && cordova prepare",
-    "build": "node config && webpack && cordova build",
+    "build": "node config && webpack && phonegap build",
     "start": "node config && webpack-dev-server",
     "test": "echo \"No tests (yet!) -- submit a PR?\" && exit 0"
   },

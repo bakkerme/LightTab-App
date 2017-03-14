@@ -1,21 +1,23 @@
 import store from '../store';
 import Socket from 'socket.io-client';
-import {message} from ''
 
  export default class ParamToSocket {
   constructor() {
-    this.socket = new Socket('http://localhost:48765');
+    // this.socket = new Socket('http://localhost:48765');
+    this.socket = new Socket('http://10.0.0.116:48765');
     store.subscribe(() => this.onStoreChange());
   }
   
   onStoreChange() {
-    console.log(store.getState());
+    // console.log(store.getState());
+    let state = store.getState();
+    this.sendChangeToSever("Exposure", state.devParams.Exposure);
   }
   
-  sendChangeToSever(message) {
-      socket.emit('message', {
-        param: 'Tint',
-        value: 90
+  sendChangeToSever(param, value) {
+      this.socket.emit('message', {
+        param: param,
+        value: value
       })
     
     // this.socket.on('connect', function () {
