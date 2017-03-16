@@ -22,7 +22,7 @@ class ParamSlider extends Component {
   }
 
   render() {
-    let { onChange, min, max, value, precision } = this.props;
+    let { onChange, min, max, value, precision, ...other } = this.props;
     let calculatedPrecision = Math.pow(10, precision);
     
     let preciseMin = min * calculatedPrecision;
@@ -35,6 +35,7 @@ class ParamSlider extends Component {
         max={preciseMax}
         values={[value]}
         onValuesUpdated={(value) => this.onChange(value)}
+        {...other}
       />
     );
   }
@@ -53,7 +54,7 @@ ParamSlider.propTypes = {
 ParamSlider.defaultProps = {
   min: 1,
   max: 100,
-  precision: 1,
+  precision: 0,
   value: 50
 }
 

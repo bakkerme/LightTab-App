@@ -1,19 +1,17 @@
 .rheostat {
   overflow: visible;
-
-  /* @DEBUG */
-  position: absolute;
-  top: 100px;
 }
 
 .rheostat-background {
   background-color: #e0e0e0;
   position: relative;
+  border-radius: 20px;
 }
 
 .rheostat-progress {
   background-color: #00afff;
   position: absolute;
+  border-radius: 20px;
 }
 
 .rheostat-handle {
