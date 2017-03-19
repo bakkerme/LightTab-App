@@ -2,8 +2,8 @@ import Socket from 'socket.io-client';
 
  export default class ParamToSocket {
   constructor() {
-    this.socket = new Socket('http://localhost:48765');
-    // this.socket = new Socket('http://10.0.0.116:48765');
+    // this.socket = new Socket('http://localhost:48765');
+    this.socket = new Socket('http://10.0.0.86:48765');
   }
   
   sendChangeToSever(param, value) {
