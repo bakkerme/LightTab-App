@@ -1,19 +1,16 @@
 import Socket from 'socket.io-client';
 
- export default class ParamToSocket {
+export default class ParamToSocket {
   constructor() {
-    // this.socket = new Socket('http://localhost:48765');
-    this.socket = new Socket('http://10.0.0.86:48765');
+    this.socket = new Socket('http://localhost:48765');
+    // this.socket = new Socket('http://10.0.0.86:48765');
   }
-  
-  sendChangeToSever(param, value) {
-      this.socket.emit('message', {
-        param: param,
-        value: value
-      })
-    
+
+  sendChangeToSever(message) {
+    this.socket.emit('message', message.transformToTransportable());
+
     // this.socket.on('connect', function () {
-      
+
     // });
     // socket.on('message', function (data) {
     //   console.log(data);
