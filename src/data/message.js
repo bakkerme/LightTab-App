@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 export default class Message {
   static TYPE = {
-    UPDATE_PARAM: 'PARAM_UPDATE',
+    UPDATE_PARAM: 'UPDATE_PARAM',
     REQUEST_PARAM_RANGE: 'REQUEST_PARAM_RANGE' 
   };
 

@@ -38,7 +38,8 @@
     "ios": "cordova run ios",
     "prepare": "node config && webpack && cordova prepare",
     "build": "node config && webpack && phonegap build",
-    "start": "node config && webpack-dev-server --host 10.0.0.86",
+    "start": "node config && webpack-dev-server",
+    "startLaptop": "node config && webpack-dev-server --host 10.0.0.86",
     "test": "echo \"No tests (yet!) -- submit a PR?\" && exit 0"
   },
   "keywords": [],
