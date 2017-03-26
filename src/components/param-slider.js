@@ -3,7 +3,7 @@ import { connect, Provider } from 'react-redux'
 import Rheostat from 'rheostat';
 import { updateParam } from '../actions/index';
 
-@connect()
+
 class ParamSlider extends Component {
   constructor(props) {
     super();
@@ -11,11 +11,8 @@ class ParamSlider extends Component {
     this.state = {}
   }
 
-  onChange(value) {
+  onChange = (value) => {
     let finalValue = value.values[0] /  Math.pow(10, this.props.precision);
-    
-    this.props.dispatch(updateParam(this.props.devParam, finalValue))
-
     if (this.props.onChange) {
       this.props.onChange(finalValue);
     }
@@ -34,7 +31,7 @@ class ParamSlider extends Component {
         min={preciseMin}
         max={preciseMax}
         values={[value]}
-        onValuesUpdated={(value) => this.onChange(value)}
+        onValuesUpdated={this.onChange}
         {...other}
       />
     );
@@ -59,4 +56,31 @@ ParamSlider.defaultProps = {
 }
 
 
-export default ParamSlider;
+@connect(
+  (state) => {
+    console.log(state);
+    return {};
+  }
+)
+class ConnectedParamSlider extends Component {
+  static propTypes = {
+    ...ParamSlider.propTypes
+  }
+  
+  onChange = (value) => {
+    this.props.dispatch(updateParam(this.props.devParam, value))
+
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
+  }
+
+  render() {
+    let {onChange, ...props} = this.props
+    
+    return(<ParamSlider onChange={this.onChange} {...props} />);
+  }
+}
+
+export default ConnectedParamSlider;
+export ParamSlider;
