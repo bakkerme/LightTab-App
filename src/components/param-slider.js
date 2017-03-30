@@ -1,10 +1,25 @@
 import React, { Component, PropTypes } from 'react';
 import { connect, Provider } from 'react-redux'
 import Rheostat from 'rheostat';
-import { updateParam } from '../actions/index';
+import { updateParam, requestParamRange } from '../actions/index';
 
+export class ParamSlider extends Component {
+  static propTypes = {
+    devParam: PropTypes.string,
+    onChange: PropTypes.func,
+    min: PropTypes.number,
+    max: PropTypes.number,
+    value: PropTypes.number,
+    precision: PropTypes.number //The amount of precision in the number returned. Think of this as the number of decimal places
+  }
 
-class ParamSlider extends Component {
+  static defaultProps = {
+    min: 1,
+    max: 100,
+    precision: 0,
+    value: 50
+  }
+
   constructor(props) {
     super();
 
@@ -12,7 +27,7 @@ class ParamSlider extends Component {
   }
 
   onChange = (value) => {
-    let finalValue = value.values[0] /  Math.pow(10, this.props.precision);
+    let finalValue = value.values[0] / Math.pow(10, this.props.precision);
     if (this.props.onChange) {
       this.props.onChange(finalValue);
     }
@@ -21,7 +36,7 @@ class ParamSlider extends Component {
   render() {
     let { onChange, min, max, value, precision, ...other } = this.props;
     let calculatedPrecision = Math.pow(10, precision);
-    
+
     let preciseMin = min * calculatedPrecision;
     let preciseMax = max * calculatedPrecision;
     let preciseValue = value * calculatedPrecision
@@ -38,23 +53,6 @@ class ParamSlider extends Component {
   }
 };
 
-//@TODO make these members once I have the required plugin
-ParamSlider.propTypes = {
-  devParam: PropTypes.string,
-  onChange: PropTypes.func,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  value: PropTypes.number,
-  precision: PropTypes.number //The amount of precision in the number returned. Think of this as the number of decimal places
-}
-
-ParamSlider.defaultProps = {
-  min: 1,
-  max: 100,
-  precision: 0,
-  value: 50
-}
-
 
 @connect(
   (state) => {
@@ -62,11 +60,15 @@ ParamSlider.defaultProps = {
     return {};
   }
 )
-class ConnectedParamSlider extends Component {
+export default class ConnectedParamSlider extends Component {
   static propTypes = {
     ...ParamSlider.propTypes
   }
-  
+
+  componentWillMount() {
+    this.props.dispatch(requestParamRange(this.props.devParam));
+  }
+
   onChange = (value) => {
     this.props.dispatch(updateParam(this.props.devParam, value))
 
@@ -76,11 +78,8 @@ class ConnectedParamSlider extends Component {
   }
 
   render() {
-    let {onChange, ...props} = this.props
-    
-    return(<ParamSlider onChange={this.onChange} {...props} />);
+    let { onChange, ...props } = this.props
+
+    return (<ParamSlider onChange={this.onChange} {...props} />);
   }
 }
-
-export default ConnectedParamSlider;
-export ParamSlider;
