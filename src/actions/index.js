@@ -12,3 +12,11 @@ export const requestParamRange = (param) => {
     param: param 
   }
 }
+
+export const updateParamRange = (param, value) => {
+  return {
+    type: "UPDATE_PARAM_RANGE",
+    param: param,
+    value: value
+  }
+}

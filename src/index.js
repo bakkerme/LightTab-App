@@ -11,6 +11,7 @@ import './css/slider.css';
 
 import store from './store';
 import ParamToSocket from './transport/param-to-socket';
+import {updateParamRange} from './actions/';
 
 @connect()
 class App extends Component {
@@ -18,17 +19,21 @@ class App extends Component {
     super();
 
     const socket = new ParamToSocket();
-    this.state = {}
+    socket.registerOnMessageCallback(this.handleMessageRecieve);
   }
-  
-        // <h1>Temperature</h1>
-        // <ParamSlider devParam="Temperature" min={-100} max={100} value={0} className="temperature" />
+
+  handleMessageRecieve = (data) => {
+    console.log(JSON.parse(data));
+  }
+
+  // <h1>Temperature</h1>
+  // <ParamSlider devParam="Temperature" min={-100} max={100} value={0} className="temperature" />
 
   render() {
     return (
       <div>
         <h1>Tint</h1>
-        <ParamSlider devParam="Tint" min={-100} max={100} value={0}  className="tint" />
+        <ParamSlider devParam="Tint" min={-100} max={100} value={0} className="tint" />
         <h1>Exposure</h1>
         <ParamSlider devParam="Exposure" min={-5} max={5} precision={2} value={0} />
         <h1>Contract</h1>
@@ -41,6 +46,6 @@ class App extends Component {
 ReactDOM.render(
   <Provider store={store}>
     <App />
-  </Provider>, 
+  </Provider>,
   document.getElementById('app')
 );

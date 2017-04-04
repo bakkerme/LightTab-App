@@ -5,7 +5,9 @@ export const devParams = (state = {}, action) => {
     case 'UPDATE_PARAM':
       newState[action.param] = action.value;
       return newState;
-    case 'REQUEST_PARAM_RANGE':
+    // case 'REQUEST_PARAM_RANGE':
+    //   newState[action.param] = action.value;
+    case 'UPDATE_PARAM_RANGE':
       newState[action.param] = action.value;
     default:
       return state;
