@@ -19,6 +19,7 @@ class App extends Component {
     super();
 
     const socket = new ParamToSocket();
+    socket.startListener();
     socket.registerOnMessageCallback(this.handleMessageRecieve);
   }
 

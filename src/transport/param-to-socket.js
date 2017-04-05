@@ -4,7 +4,6 @@ export default class ParamToSocket {
   constructor() {
     this.socket = new Socket('http://localhost:48765');
     // this.socket = new Socket('http://10.0.0.86:48765');
-    this.startListener();
     this.onMessageCallback = null;
   }
 
@@ -17,7 +16,7 @@ export default class ParamToSocket {
   }
 
   startListener() {
-    this.socket.on('message', function (data) {
+    this.socket.on('message', (data) => {
       console.log('message recieved', data);
       if(this.onMessageCallback) {
         this.onMessageCallback(data);
