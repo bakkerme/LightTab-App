@@ -55,6 +55,8 @@ if (ENV === 'development') {
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
     ],
+    devtool: 'source-map',
+    debug: true
   });
 } else {
   // config can be added here for minifying / etc
