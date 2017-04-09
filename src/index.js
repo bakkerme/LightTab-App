@@ -24,7 +24,10 @@ class App extends Component {
   }
 
   handleMessageRecieve = (data) => {
-    console.log(JSON.parse(data));
+    const message = JSON.parse(data);
+    if(message.type === "REQUEST_PARAM_RANGE") {
+      this.props.dispatch(updateParamRange(message.payload.param, message.payload.value)); 
+    }
   }
 
   // <h1>Temperature</h1>
@@ -34,11 +37,11 @@ class App extends Component {
     return (
       <div>
         <h1>Tint</h1>
-        <ParamSlider devParam="Tint" min={-100} max={100} value={0} className="tint" />
+        <ParamSlider devParam="Tint" value={0} className="tint" />
         <h1>Exposure</h1>
-        <ParamSlider devParam="Exposure" min={-5} max={5} precision={2} value={0} />
+        <ParamSlider devParam="Exposure" precision={2} value={0} />
         <h1>Contract</h1>
-        <ParamSlider devParam="Contrast" min={-100} max={100} value={0} />
+        <ParamSlider devParam="Contrast" value={0} />
       </div>
     );
   }

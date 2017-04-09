@@ -55,8 +55,15 @@ export class ParamSlider extends Component {
 
 
 @connect(
-  (state) => {
-    console.log(state);
+  (state, ownProps) => {
+    if(state.devParams[ownProps.devParam] && state.devParams[ownProps.devParam].range) {
+      const range = state.devParams[ownProps.devParam].range;
+
+      return {
+        min: range.min,
+        max: range.max,
+      };
+    }
     return {};
   }
 )
