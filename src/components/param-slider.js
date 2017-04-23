@@ -20,11 +20,6 @@ export class ParamSlider extends Component {
     value: 50
   }
 
-  constructor(props) {
-    super();
-
-    this.state = {}
-  }
 
   onChange = (value) => {
     let finalValue = value.values[0] / Math.pow(10, this.props.precision);
@@ -42,13 +37,17 @@ export class ParamSlider extends Component {
     let preciseValue = value * calculatedPrecision
 
     return (
-      <Rheostat
-        min={preciseMin}
-        max={preciseMax}
-        values={[value]}
-        onValuesUpdated={this.onChange}
-        {...other}
-      />
+      <div style={{ flex: 1 }}>
+        <Rheostat
+          min={preciseMin}
+          max={preciseMax}
+          values={[value]}
+          onValuesUpdated={this.onChange}
+          {...other}
+        />
+        <div class="plus" onClick={() => this.onChange({ values: [value + 1] })}>+</div>
+        <div class="minus" onClick={() => this.onChange({ values: [value - 1] })}>-</div>
+      </div>
     );
   }
 };
@@ -56,12 +55,13 @@ export class ParamSlider extends Component {
 
 @connect(
   (state, ownProps) => {
-    if(state.devParams[ownProps.devParam] && state.devParams[ownProps.devParam].range) {
+    if (state.devParams[ownProps.devParam] && state.devParams[ownProps.devParam].range) {
       const range = state.devParams[ownProps.devParam].range;
 
       return {
         min: range.min,
         max: range.max,
+        value: range.value
       };
     }
     return {};
@@ -71,6 +71,15 @@ export default class ConnectedParamSlider extends Component {
   static propTypes = {
     ...ParamSlider.propTypes
   }
+
+  constructor(props) {
+    super();
+
+    this.state = {
+      value: 0
+    }
+  }
+
 
   componentWillMount() {
     this.props.dispatch(requestParamRange(this.props.devParam));
