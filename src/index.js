@@ -11,7 +11,7 @@ import './css/slider.css';
 
 import store from './store';
 import ParamToSocket from './transport/param-to-socket';
-import {updateParamRange} from './actions/';
+import { updateParamRange } from './actions/';
 
 @connect()
 class App extends Component {
@@ -25,23 +25,34 @@ class App extends Component {
 
   handleMessageRecieve = (data) => {
     const message = JSON.parse(data);
-    if(message.type === "REQUEST_PARAM_RANGE") {
-      this.props.dispatch(updateParamRange(message.payload.param, message.payload.value)); 
+    if (message.type === "REQUEST_PARAM_RANGE") {
+      this.props.dispatch(updateParamRange(message.payload.param, message.payload.value));
     }
   }
-
-  // <h1>Temperature</h1>
-  // <ParamSlider devParam="Temperature" min={-100} max={100} value={0} className="temperature" />
 
   render() {
     return (
       <div>
-        <h1>Tint</h1>
-        <ParamSlider devParam="Tint" value={0} className="tint" />
-        <h1>Exposure</h1>
-        <ParamSlider devParam="Exposure" precision={2} value={0} />
-        <h1>Contract</h1>
-        <ParamSlider devParam="Contrast" value={0} />
+        <div style={{ flexDirection: 'row', display: 'flex' }}>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Temperature</h1>
+            <ParamSlider devParam="Temperature" value={0} className="temperature" />
+          </div>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Tint</h1>
+            <ParamSlider devParam="Tint" value={0} className="tint" />
+          </div>
+        </div>
+        <div style={{ flexDirection: 'row', display: 'flex' }}>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Exposure</h1>
+            <ParamSlider devParam="Exposure" precision={2} value={0} />
+          </div>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Contrast</h1>
+            <ParamSlider devParam="Contrast" value={0} />
+          </div>
+        </div>
       </div>
     );
   }
