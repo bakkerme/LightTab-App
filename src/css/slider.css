@@ -5,13 +5,13 @@
 .rheostat-background {
   background-color: #e0e0e0;
   position: relative;
-  border-radius: 20px;
+  border-radius: 10px 10px 0 0;
 }
 
 .rheostat-progress {
   background-color: #00afff;
   position: absolute;
-  border-radius: 20px;
+  border-radius: 10px 10px 0 0;
 }
 
 .rheostat-handle {

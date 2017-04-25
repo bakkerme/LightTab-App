@@ -37,7 +37,7 @@ export class ParamSlider extends Component {
     let preciseValue = value * calculatedPrecision
 
     return (
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, padding: 10 }}>
         <Rheostat
           min={preciseMin}
           max={preciseMax}
@@ -45,8 +45,10 @@ export class ParamSlider extends Component {
           onValuesUpdated={this.onChange}
           {...other}
         />
-        <div class="plus" onClick={() => this.onChange({ values: [value + 1] })}>+</div>
-        <div class="minus" onClick={() => this.onChange({ values: [value - 1] })}>-</div>
+        <div className="crementors">
+          <div className="minus" onClick={() => this.onChange({ values: [value - 1] })}>-</div>
+          <div className="plus" onClick={() => this.onChange({ values: [value + 1] })}>+</div>
+        </div>
       </div>
     );
   }
