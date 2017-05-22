@@ -43,6 +43,8 @@ class App extends Component {
             <ParamSlider devParam="Tint" value={0} className="tint" />
           </div>
         </div>
+        <hr />
+        <h2>Tone</h2>
         <div style={{ flexDirection: 'row', display: 'flex' }}>
           <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
             <h1>Exposure</h1>
@@ -51,6 +53,44 @@ class App extends Component {
           <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
             <h1>Contrast</h1>
             <ParamSlider devParam="Contrast" value={0} />
+          </div>
+        </div>
+        <div style={{ flexDirection: 'row', display: 'flex' }}>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Highlights</h1>
+            <ParamSlider devParam="Highlights" value={0} />
+          </div>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Shadows</h1>
+            <ParamSlider devParam="Shadows" value={0} />
+          </div>
+        </div>
+        <div style={{ flexDirection: 'row', display: 'flex' }}>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Whites</h1>
+            <ParamSlider devParam="Whites" value={0} />
+          </div>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Blacks</h1>
+            <ParamSlider devParam="Blacks" value={0} />
+          </div>
+        </div>
+        <hr />
+        <h2>Presence</h2>
+        <div style={{ flexDirection: 'row', display: 'flex' }}>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Clarity</h1>
+            <ParamSlider devParam="Clarity" value={0} />
+          </div>
+        </div>
+        <div style={{ flexDirection: 'row', display: 'flex' }}>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Vibrance</h1>
+            <ParamSlider devParam="Vibrance" value={0} />
+          </div>
+          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
+            <h1>Saturation</h1>
+            <ParamSlider devParam="Saturation" value={0} />
           </div>
         </div>
       </div>

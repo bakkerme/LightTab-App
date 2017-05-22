@@ -1,12 +1,20 @@
 * {
-  -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+html {
+  background: linear-gradient(141deg, rgba(70,96,212,1) 0%, rgba(0,14,36,1) 100%); 
+  height: 100%;
 }
 
 body {
-  -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-  -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-  -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-  background: #ffffff;
+  -webkit-touch-callout: none;
+  /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;
+  /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none;
+  /* prevent copy paste, to allow, change 'none' to 'text' */
   font-family: 'HelveticaNeue-Light', 'HelveticaNeue', 'Roboto', Helvetica, Arial, sans-serif;
   font-size: 100%;
   /*height: 100%;*/
@@ -32,21 +40,19 @@ h1 {
 }
 
 .rheostat.temperature .rheostat-background {
-  /*#5f609E*/   
-  /*#9E9D5F*/   
-  background: linear-gradient(to right, #5f609E, #999999, #9E9D5F);
+  /*#5f609E*/
+  /*#9E9D5F*/
+  /*background: linear-gradient(to right, #5f609E, #999999, #9E9D5F);*/
 }
 
-
-.rheostat.temperature .rheostat-progress,
-.rheostat.tint .rheostat-progress {
-  display: none;
+.rheostat.temperature .rheostat-progress, .rheostat.tint .rheostat-progress {
+  /*display: none;*/
 }
 
 .rheostat.tint .rheostat-background {
-  /*#2C792A*/   
-  /*#791A79*/   
-  background: linear-gradient(to right, #2C792A, #999999, #791A79);
+  /*#2C792A*/
+  /*#791A79*/
+  /*background: linear-gradient(to right, #2C792A, #999999, #791A79);*/
 }
 
 .crementors {
@@ -58,21 +64,23 @@ h1 {
 
 .crementors .plus, .crementors .minus {
   display: flex;
-  flex: 1; 
+  flex: 1;
   align-items: center;
   justify-content: center;
-      font-size: 48px;
-    font-weight: bold;
+  font-size: 48px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .crementors .minus {
-    border: 2px solid #FF0000;
-    border-radius: 0 0 0 20px;
-    color:#FF0000; 
+  border: 2px solid #FF0000;
+  border-radius: 0 0 0 20px;
+  color: #FF0000;
+  padding-bottom: 8px;
 }
 
 .crementors .plus {
-    border: 2px solid #00FF6F;
-    border-radius: 0 0 20px 0;
-    color:#00FF6F;
+  border: 2px solid #00FF6F;
+  border-radius: 0 0 20px 0;
+  color: #00FF6F;
 }
