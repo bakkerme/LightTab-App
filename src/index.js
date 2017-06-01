@@ -6,7 +6,7 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { connect, Provider } from 'react-redux'
 
-import ParamSlider from './components/param-slider';
+import ParamSlider from './components/styled-param-slider';
 import './css/slider.css';
 
 import store from './store';
@@ -34,64 +34,31 @@ class App extends Component {
     return (
       <div>
         <div style={{ flexDirection: 'row', display: 'flex' }}>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Temperature</h1>
-            <ParamSlider devParam="Temperature" value={0} className="temperature" />
-          </div>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Tint</h1>
-            <ParamSlider devParam="Tint" value={0} className="tint" />
-          </div>
+          <ParamSlider devParam="Temperature" value={0} className="temperature" />
+          <ParamSlider devParam="Tint" value={0} className="tint" />
         </div>
         <hr />
         <h2>Tone</h2>
         <div style={{ flexDirection: 'row', display: 'flex' }}>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Exposure</h1>
-            <ParamSlider devParam="Exposure" precision={2} value={0} />
-          </div>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Contrast</h1>
-            <ParamSlider devParam="Contrast" value={0} />
-          </div>
+          <ParamSlider devParam="Exposure" precision={2} value={0} />
+          <ParamSlider devParam="Contrast" value={0} />
         </div>
         <div style={{ flexDirection: 'row', display: 'flex' }}>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Highlights</h1>
-            <ParamSlider devParam="Highlights" value={0} />
-          </div>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Shadows</h1>
-            <ParamSlider devParam="Shadows" value={0} />
-          </div>
+          <ParamSlider devParam="Highlights" value={0} />
+          <ParamSlider devParam="Shadows" value={0} />
         </div>
         <div style={{ flexDirection: 'row', display: 'flex' }}>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Whites</h1>
-            <ParamSlider devParam="Whites" value={0} />
-          </div>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Blacks</h1>
-            <ParamSlider devParam="Blacks" value={0} />
-          </div>
+          <ParamSlider devParam="Whites" value={0} />
+          <ParamSlider devParam="Blacks" value={0} />
         </div>
         <hr />
         <h2>Presence</h2>
         <div style={{ flexDirection: 'row', display: 'flex' }}>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Clarity</h1>
-            <ParamSlider devParam="Clarity" value={0} />
-          </div>
+          <ParamSlider devParam="Clarity" value={0} />
         </div>
         <div style={{ flexDirection: 'row', display: 'flex' }}>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Vibrance</h1>
-            <ParamSlider devParam="Vibrance" value={0} />
-          </div>
-          <div style={{ flex: 1, display: 'flex', position: 'relative' }}>
-            <h1>Saturation</h1>
-            <ParamSlider devParam="Saturation" value={0} />
-          </div>
+          <ParamSlider devParam="Vibrance" value={0} />
+          <ParamSlider devParam="Saturation" value={0} />
         </div>
       </div>
     );

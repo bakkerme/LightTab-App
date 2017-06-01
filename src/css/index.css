@@ -4,7 +4,8 @@
 }
 
 html {
-  background: linear-gradient(141deg, rgba(70,96,212,1) 0%, rgba(0,14,36,1) 100%); 
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+  background-blend-mode: multiply, multiply;
   height: 100%;
 }
 
@@ -21,66 +22,4 @@ body {
   margin: 0px;
   padding: 10px;
   /*width: 100%;*/
-}
-
-h1 {
-  position: absolute;
-  z-index: 10;
-  font-size: 15px;
-  left: 21px;
-  top: 24px;
-  color: white;
-  font-weight: 500;
-}
-
-.rheostat {
-  overflow: visible;
-  margin-top: 20px;
-  flex: 1;
-}
-
-.rheostat.temperature .rheostat-background {
-  /*#5f609E*/
-  /*#9E9D5F*/
-  /*background: linear-gradient(to right, #5f609E, #999999, #9E9D5F);*/
-}
-
-.rheostat.temperature .rheostat-progress, .rheostat.tint .rheostat-progress {
-  /*display: none;*/
-}
-
-.rheostat.tint .rheostat-background {
-  /*#2C792A*/
-  /*#791A79*/
-  /*background: linear-gradient(to right, #2C792A, #999999, #791A79);*/
-}
-
-.crementors {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  height: 56px;
-}
-
-.crementors .plus, .crementors .minus {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.crementors .minus {
-  border: 2px solid #FF0000;
-  border-radius: 0 0 0 20px;
-  color: #FF0000;
-  padding-bottom: 8px;
-}
-
-.crementors .plus {
-  border: 2px solid #00FF6F;
-  border-radius: 0 0 20px 0;
-  color: #00FF6F;
 }

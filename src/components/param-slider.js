@@ -20,7 +20,6 @@ export class ParamSlider extends Component {
     value: 50
   }
 
-
   onChange = (value) => {
     let finalValue = value.values[0] / Math.pow(10, this.props.precision);
     if (this.props.onChange) {
@@ -49,6 +48,45 @@ export class ParamSlider extends Component {
           <div className="minus" onClick={() => this.onChange({ values: [value - 1] })}>-</div>
           <div className="plus" onClick={() => this.onChange({ values: [value + 1] })}>+</div>
         </div>
+        <style jsx global>{`
+          .rheostat {
+            overflow: visible;
+            margin-top: 20px;
+            flex: 1;
+          }  
+        `}</style>
+
+        <style jsx>{`
+          .crementors {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            height: 56px;
+          }
+
+          .crementors .plus, .crementors .minus {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+          .crementors .minus {
+            border: 2px solid #FF0000;
+            border-radius: 0 0 0 20px;
+            color: #FF0000;
+            padding-bottom: 8px;
+          }
+
+          .crementors .plus {
+            border: 2px solid #00FF6F;
+            border-radius: 0 0 20px 0;
+            color: #00FF6F;
+          }
+        `}</style>
       </div>
     );
   }
