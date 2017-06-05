@@ -1,5 +1,6 @@
 import ParamSlider from './param-slider';
 import React, { Component, PropTypes } from 'react';
+import overrideStyles from './rheostat-overide-styles';
 
 export default class StyledParamSlider extends Component {
   render() {
@@ -26,6 +27,7 @@ export default class StyledParamSlider extends Component {
             font-weight: 500;
           }
         `}</style>
+        <style jsx global>{overrideStyles}</style>
       </div>
     );
   }

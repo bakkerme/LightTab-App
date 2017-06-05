@@ -1,3 +1,4 @@
+export default `
 .rheostat {
   overflow: visible;
 }
@@ -59,4 +60,4 @@
 
 .rheostat-horizontal .rheostat-handle:after {
   left: 13px;
-}
+}`;
