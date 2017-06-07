@@ -21,19 +21,19 @@ export class ParamSlider extends Component {
   }
 
   onChange = (value) => {
-    let finalValue = value.values[0] / Math.pow(10, this.props.precision);
+    const finalValue = value.values[0] / Math.pow(10, this.props.precision);
     if (this.props.onChange) {
       this.props.onChange(finalValue);
     }
   }
 
   render() {
-    let { onChange, min, max, value, precision, ...other } = this.props;
-    let calculatedPrecision = Math.pow(10, precision);
+    const { onChange, min, max, value, precision, ...other } = this.props;
+    const calculatedPrecision = Math.pow(10, precision);
 
-    let preciseMin = min * calculatedPrecision;
-    let preciseMax = max * calculatedPrecision;
-    let preciseValue = value * calculatedPrecision
+    const preciseMin = min * calculatedPrecision;
+    const preciseMax = max * calculatedPrecision;
+    const preciseValue = value * calculatedPrecision
 
     return (
       <div style={{ flex: 1, padding: 10 }}>
@@ -51,7 +51,7 @@ export class ParamSlider extends Component {
         <style jsx global>{`
           .rheostat {
             overflow: visible;
-            margin-top: 20px;
+            margin-top: 13px;
             flex: 1;
           }  
         `}</style>

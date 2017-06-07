@@ -13,7 +13,6 @@ export default class StyledParamSlider extends Component {
             flex: 1;
             display: flex;
             position: relative;
-            background: rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
           }
@@ -22,9 +21,11 @@ export default class StyledParamSlider extends Component {
             z-index: 10;
             font-size: 15px;
             left: 21px;
-            top: 24px;
+            top: 27px;
             color: white;
             font-weight: 500;
+            margin: 0;
+
           }
         `}</style>
         <style jsx global>{overrideStyles}</style>
